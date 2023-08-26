@@ -10,8 +10,5 @@ COPY . /app
 # Install Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Make port 80 available to the world outside this container
-EXPOSE 80
-
 # Run app.py when the container launches
-CMD ["gunicorn", "--workers", "3", "--timeout", "1000", "--bind", "0.0.0.0:80", "app:app"]
+CMD ["python", "main.py"]
