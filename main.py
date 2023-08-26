@@ -79,16 +79,16 @@ async def on_ready(self):
 
 
 async def main():
-    async with client:
-        await load_extensions()
-        try:
-            # await client.start(os.environ.get('token'))
-            await client.start(os.getenv("token"))
-        except discord.errors.HTTPException as e:
-            print('executing kill 1')
-            print(e)
-            # p = subprocess.run(("kill", "1"))
-            # p.wait()
+    # async with client:
+    await load_extensions()
+    try:
+        # await client.start(os.environ.get('token'))
+        await client.start(os.getenv("token"))
+    except discord.errors.HTTPException as e:
+        print('executing kill 1')
+        print(e)
+        # p = subprocess.run(("kill", "1"))
+        # p.wait()
 
 
 # keep_alive()
