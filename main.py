@@ -3,6 +3,7 @@ import os
 import discord
 from discord.ext import commands
 # from keep_alive import keep_alive
+from dotenv import load_dotenv
 import asyncio
 import subprocess
 
@@ -11,6 +12,9 @@ def get_prefix(client, message):
         prefixes = json.load(f)
     return prefixes[str(message.guild.id)]
 
+
+# Load environment variables from .env file
+load_dotenv()
 
 client = commands.Bot(command_prefix=get_prefix, intents=discord.Intents.all())
 
@@ -79,7 +83,7 @@ async def main():
         await load_extensions()
         try:
             # await client.start(os.environ.get('token'))
-            await client.start('ODg4MjM4OTY4NzI0OTIyNDAx.GYclTO.6GzmHK0yXB0WV5WGAkcyuUpKXkoiNBkqz98db8')
+            await client.start(os.getenv("token"))
         except discord.errors.HTTPException as e:
             print('executing kill 1')
             print(e)
@@ -88,7 +92,7 @@ async def main():
 
 
 # keep_alive()
-asyncio.run(main(debug=True))
+asyncio.run(main())
 
 # try:
 #     client.run(os.environ['token'])
